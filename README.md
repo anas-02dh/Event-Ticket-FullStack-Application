@@ -21,17 +21,14 @@ cd event-tickets-frontend
 npm install
 npm start
 
-# Run the full application with Docker Compose
-//From the project root:
+# Run the full application with Docker Compose From the project root :
 docker compose up --build
 
-// The Docker Compose stack contains:
+# The Docker Compose stack contains:
     MySQL
     Spring Boot backend
     Angular frontend served by Nginx
 
-# Start all services (API + User App + Admin App)
-pnpm run dev
 ```
 
 ### Service URLs
