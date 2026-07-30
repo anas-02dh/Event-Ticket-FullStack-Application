@@ -4,9 +4,9 @@ A web application that helps organizers create and manage events while allowing 
 
 
 ## Technologies
-**Backend** : Java, Spring boot, Spring Data JPA, Spring Security, Swagger API, Maven.
-**Frontend** : Typescript, Angular Framework.
-**Database** : MySQL
+- **Backend** : Java, Spring boot, Spring Data JPA, Spring Security, Swagger API, Maven.
+- **Frontend** : Typescript, Angular Framework.
+- **Database** : MySQL
 
 
 ## Quick Start
