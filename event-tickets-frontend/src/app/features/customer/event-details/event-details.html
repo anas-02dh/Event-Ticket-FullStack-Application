@@ -1,0 +1,307 @@
+<div class="container py-5">
+
+    @if (event(); as currentEvent) {
+
+        <div class="row">
+
+            <!-- EVENT INFORMATION -->
+
+            <div class="col-md-8">
+
+                <button
+                    type="button"
+                    class="btn btn-outline-dark mb-4"
+                    (click)="goBack()"
+                >
+
+                    ← Back to Events
+
+                </button>
+
+
+                <h1 class="mb-3">
+
+                    {{ currentEvent.title }}
+
+                </h1>
+
+
+                <p class="text-muted">
+
+                    {{ currentEvent.description }}
+
+                </p>
+
+
+                <hr>
+
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <strong>
+                            Date
+                        </strong>
+
+                        <p>
+                            {{ currentEvent.date }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <strong>
+                            Time
+                        </strong>
+
+                        <p>
+                            {{ currentEvent.time }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <strong>
+                            Location
+                        </strong>
+
+                        <p>
+                            {{ currentEvent.location }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <strong>
+                            Category
+                        </strong>
+
+                        <p>
+                            {{ currentEvent.categoryName }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <strong>
+                            Organizer
+                        </strong>
+
+                        <p>
+                            {{ currentEvent.organizerName }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <strong>
+                            Available Seats
+                        </strong>
+
+                        <p>
+
+                            {{ currentEvent.remainSeats }}
+
+                            /
+
+                            {{ currentEvent.capacity }}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PURCHASE CARD -->
+
+            <div class="col-md-4">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <h4 class="mb-4">
+
+                            Purchase Ticket
+
+                        </h4>
+
+
+                        <div class="mb-3">
+
+                            <strong>
+                                Price per ticket
+                            </strong>
+
+                            <p>
+
+                                {{ currentEvent.price }}
+
+                                MAD
+
+                            </p>
+
+                        </div>
+
+
+                        <label
+                            for="quantity"
+                            class="form-label"
+                        >
+
+                            Quantity
+
+                        </label>
+
+
+                        <div
+                            class="input-group mb-3"
+                        >
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-dark"
+                                (click)="decreaseQuantity()"
+                            >
+
+                                −
+
+                            </button>
+
+
+                            <input
+                                id="quantity"
+                                type="number"
+                                class="form-control text-center"
+                                [(ngModel)]="quantity"
+                                min="1"
+                                [max]="currentEvent.remainSeats"
+                            >
+
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-dark"
+                                (click)="increaseQuantity()"
+                            >
+
+                                +
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <strong>
+                                Total
+                            </strong>
+
+                            <h4>
+
+                                {{ currentEvent.price * quantity }}
+
+                                MAD
+
+                            </h4>
+
+                        </div>
+
+
+                        @if (errorMessage) {
+
+                            <div
+                                class="alert alert-dark"
+                            >
+
+                                {{ errorMessage }}
+
+                            </div>
+
+                        }
+
+
+                        @if (successMessage) {
+
+                            <div
+                                class="alert alert-dark"
+                            >
+
+                                {{ successMessage }}
+
+                            </div>
+
+                        }
+
+
+                        <button
+                            type="button"
+                            class="btn btn-dark w-100"
+                            [disabled]="
+                                isPurchasing ||
+                                currentEvent.remainSeats === 0
+                            "
+                            (click)="purchaseEvent()"
+                        >
+
+                            @if (isPurchasing) {
+
+                                Purchasing...
+
+                            } @else {
+
+                                Purchase Ticket
+
+                            }
+
+                        </button>
+
+
+                        @if (
+                            currentEvent.remainSeats === 0
+                        ) {
+
+                            <p
+                                class="text-center mt-3 mb-0"
+                            >
+
+                                Sold out
+
+                            </p>
+
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    }
+
+    @else {
+
+        <p>
+            Loading event...
+        </p>
+
+    }
+
+</div>

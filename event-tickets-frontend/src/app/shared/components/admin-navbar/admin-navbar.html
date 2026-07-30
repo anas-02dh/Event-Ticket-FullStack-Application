@@ -1,0 +1,29 @@
+<nav class="navbar navbar-light bg-white border-bottom px-4">
+
+    <h4>
+
+        Admin Dashboard
+
+    </h4>
+
+    <div>
+
+        Welcome,
+
+        <strong>
+
+            {{ authService.getName() }}
+
+        </strong>
+
+        <button
+            class="btn btn-dark ms-3"
+            (click)="logout()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>

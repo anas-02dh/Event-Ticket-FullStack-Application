@@ -1,0 +1,254 @@
+<h2 class="mb-4">
+
+    Dashboard
+
+</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        <app-stat-card
+            title="Users"
+            [value]="dashboard().users">
+        </app-stat-card>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <app-stat-card
+            title="Events"
+            [value]="dashboard().events">
+        </app-stat-card>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <app-stat-card
+            title="Categories"
+            [value]="dashboard().categories">
+        </app-stat-card>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <app-stat-card
+            title="Tickets"
+            [value]="dashboard().tickets">
+        </app-stat-card>
+
+    </div>
+
+</div>
+
+<div class="card mt-5">
+
+    <div class="card-header">
+
+        <h5 class="mb-0">
+            Recent Events
+        </h5>
+
+    </div>
+
+    <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Title</th>
+
+                        <th>Category</th>
+
+                        <th>Date</th>
+
+                        <th>Location</th>
+
+                        <th>Price</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @for (event of recentEvents(); track event.id) {
+
+                        <tr>
+
+                            <td>
+                                {{ event.title }}
+                            </td>
+
+                            <td>
+                                {{ event.categoryName }}
+                            </td>
+
+                            <td>
+                                {{ event.date }}
+                            </td>
+
+                            <td>
+                                {{ event.location }}
+                            </td>
+
+                            <td>
+                                {{ event.price }} MAD
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-dark">
+
+                                    {{ event.status }}
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                    @empty {
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="text-center py-4"
+                            >
+
+                                No recent events found.
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card mt-5">
+
+    <div class="card-header">
+
+        <h5 class="mb-0">
+            Recent Ticket Purchases
+        </h5>
+
+    </div>
+
+    <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Buyer</th>
+
+                        <th>Event</th>
+
+                        <th>Quantity</th>
+
+                        <th>Total</th>
+
+                        <th>Date</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @for (
+                        ticket of recentTickets();
+                        track ticket.id
+                    ) {
+
+                        <tr>
+
+                            <td>
+                                {{ ticket.buyerName }}
+                            </td>
+
+                            <td>
+                                {{ ticket.eventTitle }}
+                            </td>
+
+                            <td>
+                                {{ ticket.quantity }}
+                            </td>
+
+                            <td>
+                                {{ ticket.totalPrice }} MAD
+                            </td>
+
+                            <td>
+                                {{ ticket.purchaseDate }}
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-dark">
+
+                                    {{ ticket.status }}
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                    @empty {
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="text-center py-4"
+                            >
+
+                                No recent purchases found.
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

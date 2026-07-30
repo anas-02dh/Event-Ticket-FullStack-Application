@@ -1,0 +1,246 @@
+<div
+    class="container-fluid"
+>
+
+
+    <!-- HEADER -->
+
+    <div
+        class="d-flex
+               justify-content-between
+               align-items-center
+               mb-4"
+    >
+
+        <h2>
+
+            Available Events
+
+        </h2>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div
+        class="card
+               mb-4"
+    >
+
+        <div
+            class="card-body"
+        >
+
+            <div
+                class="row
+                       g-2"
+            >
+
+                <div
+                    class="col-md-10"
+                >
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search events by title..."
+                        [(ngModel)]="searchKeyword"
+                        (keyup.enter)="searchEvents()"
+                    >
+
+                </div>
+
+
+                <div
+                    class="col-md-2
+                           d-flex
+                           gap-2"
+                >
+
+                    <button
+                        type="button"
+                        class="btn
+                               btn-dark
+                               w-100"
+                        (click)="searchEvents()"
+                    >
+
+                        Search
+
+                    </button>
+
+
+                    @if (searchKeyword) {
+
+                        <button
+                            type="button"
+                            class="btn
+                                   btn-outline-dark"
+                            (click)="clearSearch()"
+                        >
+
+                            Clear
+
+                        </button>
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- EVENTS -->
+
+    <div
+        class="row
+               g-4"
+    >
+
+        @for (
+
+            event of events();
+
+            track event.id
+
+        ) {
+
+
+            <div
+                class="col-md-6
+                       col-lg-4"
+            >
+
+                <div
+                    class="card
+                           h-100"
+                >
+
+                    <div
+                        class="card-body
+                               d-flex
+                               flex-column"
+                    >
+
+                        <h5
+                            class="card-title"
+                        >
+
+                            {{ event.title }}
+
+                        </h5>
+
+
+                        <p
+                            class="card-text"
+                        >
+
+                            {{ event.description }}
+
+                        </p>
+
+
+                        <div
+                            class="mt-auto"
+                        >
+
+                            <p>
+
+                                <strong>
+                                    Date:
+                                </strong>
+
+                                {{ event.date }}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Location:
+                                </strong>
+
+                                {{ event.location }}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Price:
+                                </strong>
+
+                                {{ event.price }}
+
+                                MAD
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Available seats:
+                                </strong>
+
+                                {{ event.remainSeats }}
+
+                                /
+
+                                {{ event.capacity }}
+
+                            </p>
+
+
+                            <button
+                                type="button"
+                                class="btn
+                                       btn-dark
+                                       w-100"
+                                (click)="viewEventDetails(event.id)"
+                            >
+
+                                View Details
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        }
+
+
+        @empty {
+
+            <div
+                class="col-12"
+            >
+
+                <div
+                    class="text-center
+                           py-5"
+                >
+
+                    No events found.
+
+                </div>
+
+            </div>
+
+        }
+
+    </div>
+
+</div>
