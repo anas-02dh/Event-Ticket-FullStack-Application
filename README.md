@@ -36,10 +36,10 @@ pnpm run dev
 
 ### Service URLs
 
-| Service | URL | Description |
-|---------|-----|-------------|
-|Back-end App | http://localhost:8086 
-|front-end App | http://localhost:4200 
+| Service | URL |
+|---------|-----|
+|Back-end App | http://localhost:8086 |
+|front-end App | http://localhost:4200 |
 |Swagger UI | http://localhost:8086/swagger-ui/index.html |
 
 ## Test Accounts
@@ -51,7 +51,7 @@ After running the seed script:
 
 ### Admin User
 - admin@events.com / password: 123456
-  you can create another admin account you should first run command from root project 
+- you can create another admin account you should first run command from root project 
   ```bash
       $docker exec -it eventtickets-mysql mysql -uroot -pmysql2002
       mysql> INSERT INTO user
