@@ -1,6 +1,6 @@
 # Events Tickets Management Platform
 
-A web application that helps organizers create and manage events while allowing attendees to browse events, purchase tickets, and receive confirmation.
+A web application that helps organizers create and manage events while allowing attendees to browse events, purchase tickets, and receive confirmation.<a href="https://www.youtube.com/watch?v=SDJubuzoQ88">Demo Live Link</a>
 
 
 ## Technologies
